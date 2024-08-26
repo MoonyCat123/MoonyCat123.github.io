@@ -75,14 +75,14 @@
       <div class="outer">
         <section id="main">
   
-    <article id="post-模拟退火算法" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+    <article id="post-初识C语言" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
   <div class="article-meta">
-    <a href="/2024/08/09/%E6%A8%A1%E6%8B%9F%E9%80%80%E7%81%AB%E7%AE%97%E6%B3%95/" class="article-date">
-  <time class="dt-published" datetime="2024-08-09T08:28:05.000Z" itemprop="datePublished">2024-08-09</time>
+    <a href="/2024/08/25/%E5%88%9D%E8%AF%86C%E8%AF%AD%E8%A8%80/" class="article-date">
+  <time class="dt-published" datetime="2024-08-25T13:58:27.000Z" itemprop="datePublished">2024-08-25</time>
 </a>
     
   <div class="article-category">
-    <a class="article-category-link" href="/categories/%E6%95%B0%E6%A8%A1/">数模</a>
+    <a class="article-category-link" href="/categories/C-Primer-Plus/">C Primer Plus</a>
   </div>
 
   </div>
@@ -93,7 +93,7 @@
         
   
     <h1 itemprop="name">
-      <a class="p-name article-title" href="/2024/08/09/%E6%A8%A1%E6%8B%9F%E9%80%80%E7%81%AB%E7%AE%97%E6%B3%95/">模拟退火算法</a>
+      <a class="p-name article-title" href="/2024/08/25/%E5%88%9D%E8%AF%86C%E8%AF%AD%E8%A8%80/">初识C语言</a>
     </h1>
   
 
@@ -101,56 +101,42 @@
     
     <div class="e-content article-entry" itemprop="articleBody">
       
-        <h2 id="启发式搜索"><a href="#启发式搜索" class="headerlink" title="启发式搜索"></a>启发式搜索</h2><p>​    按照预定的策略来搜索函数的最小值, 并没有用到搜索过程中的中间信息来改进搜索策略, 这样的搜索方式称为“盲目搜索”. 比较经典的有蒙特卡罗模拟和穷举法. </p>
-<p>​    有利用中间的搜索信息来改进搜索策略的搜索方式称为”启发式搜索”. 模拟退火算法就是其中的一种. 另外还有粒子群算法, 蚁群算法, 遗传算法等. </p>
-<h2 id="模拟退火算法的思想"><a href="#模拟退火算法的思想" class="headerlink" title="模拟退火算法的思想"></a>模拟退火算法的思想</h2><p>​    对于一些启发式算法, 如梯度下降法, 很容易陷入局部最优解当中. 为解决这个问题,模拟退火算法能以一定概率接受次优解, 从而跳出局部最优解, 增加找到全局最优解的可能性. </p>
-<p>​    下面说的的”最优解”都是值找到一个函数的最小值.</p>
-<p>​    假设找到了一个最优解$x_i$ ($x_i$可能是一个值, 如果$f$是一个多元函数, 那$x_i$还可能是一个向量, 在某些问题中还可能是一个矩阵), 随机搜索, 又得到一个次优解$x_{i+1}$, $f(x_i)&lt;f(x_{i+1})$. 规定$f(x_{i+1})$与$f(x_i)$的值越接近, 接受$f(x_{i+1})$的概率越高. 容易构造函数P满足以上要求:</p>
-<script type="math/tex; mode=display">
-P=e^{-|f(x_{i+1})-f(x_i)|}</script><p>​    显然, $f(x_{i+1})$与$f(x_i)$的差距越小, P的值越接近于1, 反之越接近于0.</p>
-<p>​    但是, 在搜索的不同阶段其实对函数P也有不同的要求. 在搜索的前期, 应该扩大搜索的范围, 我们应当将P设置的大一些, 也就是倾向于接受新解. 在搜索后期, 为了收敛到最优解, 应将P值设置的小一些, 也就是倾向于保留目前的最优解, 因为此时的最优解很有可能就是全局的最优解. 我们可以构造一个关于时间的函数$C_t$来改进概率函数P:</p>
-<script type="math/tex; mode=display">
-P=e^{-|f(x_{i+1})-f(x_i)|\cdot C_t}</script><p>​    显然, $C_t$与t正相关, t越大, $C_t$​越大.</p>
-<p>​    这里的$e^{-C_t}$就体现了模拟退火算法中”退火”的过程. 比如一块烧红的铁, 在起始状态温度高, 分子运动较快, 在模型中也就是$e^{-C_t}$较大, 新解快速更新. 随着时间增长, 分子运动缓慢, 在模型中$e^{-C_t}$越来越小, 使得新解被接受的概率越来越小, 系统趋向于稳定.</p>
-<p>​    我们设$C_t=100\times 0.95^{-t}$, 再令$|f(x_{i+1})-f(x_i)|=L$, 则P可改写为:</p>
-<script type="math/tex; mode=display">
-P=e^{-\frac {L}{100\times 0.95^t}}</script><p>​    这里的$C_t$参数可以改.</p>
-<p>​    实际上, 在搜索初期, 为多探索解空间, 不仅接受新解的概率应该大, 新解与旧解的距离也应该大一些. 这在<strong>需要注意的问题</strong>第3点新解的产生中可以体现出来.</p>
-<h2 id="模拟退火算法的步骤"><a href="#模拟退火算法的步骤" class="headerlink" title="模拟退火算法的步骤"></a>模拟退火算法的步骤</h2><ol>
-<li><p>随机生成一个解A, 计算$f(A)$的值.</p>
-</li>
-<li><p>在A的附近随机生成一个解B.</p>
-</li>
-<li><p>计算$f(B)$的值,  判断$f(A)$和$f(B)$的关系. 如果$f(A)\geq f(B)$, 则将解更新为B, 并重复步骤2.</p>
-<p>如果$f(A)\leq f(B)$, 计算接受概率P, 并生成一个在[0,1]的随机数r, 若$r&lt;P$, 则接受解B, 将解更新为B (A还是要保存下来), 并重复步骤2. 否则, 舍弃解B, 返回步骤2. </p>
-</li>
-</ol>
-<h2 id="需要注意的问题"><a href="#需要注意的问题" class="headerlink" title="需要注意的问题"></a>需要注意的问题</h2><ol>
-<li>在代码实现时, 可以用轮数来代替t. 在同一轮中, 或者同一t值下, 需要嵌套一个循环来尽可能使解遍布解空间, 避免漏解. 因此应该有两个循环.</li>
-<li><p>停止的标志: </p>
-<ol>
-<li>达到指定的迭代次数</li>
-<li>达到指定的接受概率</li>
-<li>最优解迭代n次后都不再改变</li>
-</ol>
-</li>
-<li><p><strong>一个重要的问题</strong>: 在算法的步骤2中, 如何找到一个新解? 特别是当A为一个向量时, 如何在A附近生成一个新解B?</p>
-</li>
-</ol>
-<p>​    产生新解并没有一个给定的标准, 根据问题不同, 产生新解的方式也可能不同. matlab内置函数给了这样一种方式:</p>
-<p>​    首先找到一个解, $[x_1,x_2,…,x_n]$, 再生成$[y_1,y_2,…,y_n]$, $y_i$服从$N[0,1]$. 令$z_i=y_i/\sqrt {y_1^2+…+y_n^2}$. 产生新解: $X_{new}=X+T\times Z$, $T$是当前的”温度”. </p>
-<p>​    然后判断$x_{inew}$是否落在$[lb,ub]$中. 是, 则令$X_{new}=X$. 否, 则令$x_{inew}=rlb+(1-r)x_i$, $x_i<lb;$$x_{inew}=rub+(1-r)x_i$, $x_i>ub$.</lb;$$x_{inew}=rub+(1-r)x_i$,></p>
-<p>​    上面的方法只是针对单纯的函数求最值问题所使用的产生新解的方法. 像旅行商问题(TSP), 书店买书问题, 运货问题等, 产生新解的方法都不相同. 面对问题, 应该先确定解空间, 再分析产生新解可能的方式, 当然也可以去参考论文.</p>
-<h2 id="数模中模拟退火的适用场景"><a href="#数模中模拟退火的适用场景" class="headerlink" title="数模中模拟退火的适用场景"></a>数模中模拟退火的适用场景</h2><blockquote>
-<p>求解无约束(或只有上下界约束)函数最值    其实也可以考虑用粒子群</p>
-<p>求解简单的组合问题, 如旅行商问题和书店买书问题</p>
-<p>非线性整数规划也可以考虑一下模拟退火</p>
+        <blockquote>
+<p>C语言是一门流行的语言,融合了计算机科学理论和实践的控制特性. C语言的设计理念让用户能轻松地完成自顶向下的规划, 结构化编程和模块化设计. 因此, 用C语言编写的程序更易懂, 也更可靠.</p>
 </blockquote>
-<h2 id="代码实现"><a href="#代码实现" class="headerlink" title="代码实现"></a>代码实现</h2>
+<h4 id="C语言的优点"><a href="#C语言的优点" class="headerlink" title="C语言的优点"></a>C语言的优点</h4><ol>
+<li>代码紧凑且运行速度快, 十分高效</li>
+<li>可移植性强, 在一种系统写的C程序稍作修改或者不修改就能在其他系统上运行</li>
+<li>强大而灵活</li>
+<li>面向程序员. C语言是为满足程序员需求而设计出来的, 在C语言中程序员甚至可以访问硬件, 控制内存中的位. </li>
+</ol>
+<h4 id="C语言的缺点"><a href="#C语言的缺点" class="headerlink" title="C语言的缺点"></a>C语言的缺点</h4><p>C语言足够灵活, 它不像其他语言那样要求严格, 给予了程序员很大的自由, 但同时也增加了犯错的风险. 特别是指针的使用, 涉及指针的编程错误往往难以察觉.</p>
+<h4 id="计算机能做什么"><a href="#计算机能做什么" class="headerlink" title="计算机能做什么?"></a>计算机能做什么?</h4><blockquote>
+<p>在学习如何使用C语言编程之前, 最好先了解一下计算机的工作原理, 这有助于理解从C语言编写到运行发生了什么.</p>
+</blockquote>
+<p>计算机由许多部件组成, 其中CPU(中央处理单元)承担绝大部分的运算工作, 而所要执行的程序储存在内存中. </p>
+<p>CPU工作很简单: 从内存中读取一条程序, 执行, 读取下一条程序. CPU中有许多寄存器, 每个寄存器都能存储一个数字(这个数字的最大值根据寄存器的位数确定). 其中一个寄存器储存CPU下一条要执行的指令的地址, CPU根据该地址来获取和更新下一条指令, 并将其放在另一个寄存器中. 同时, 存放地址的寄存器更新下一条指令的地址, 诸如此类.</p>
+<p>CPU能理解的指令不多, 而且这些指令相当具体, 其中很多都是用于请求计算机将数字由一个位置转移到另一个位置, 如从内存转移到寄存器中, 并且, 这些指令都需要用数字指令码来表示(机器语言). 在书写这种指令时, 要清楚知道需要CPU具体做什么.</p>
+<p>用机器语言书写代码是枯燥乏味的, 且可读性很差. 高级编程语言(如C语言)以很多方式来简化了编程工作. 首先, 不必再使用数字指令来编程, 一种能很好体现逻辑性的指令. 例如, 你想将两个值相加, 只需要写下:</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">total = mine + yours;</span><br></pre></td></tr></table></figure>
+<p>而不用考虑将寄存器中的值取出, 相加, 再将结果放入寄存器中这种具体的过程.</p>
+<h4 id="编译器"><a href="#编译器" class="headerlink" title="编译器"></a>编译器</h4><p>我们上面写的程序在我们看来正确, 但对于计算机而言就是一串乱码, 这时, 我们就需要借助编译器将我们使用高级语言写的代码转化为计算机所能理解的机器语言指令. </p>
+<p>我们编写的程序被存储在文本文档中, 该文件被称为源代码文件, 该文件一般要求以.c作为拓展名 (xxx.c). 编译器要将该文件转化为可执行的, 包含机器语言的文件, 一般有两个步骤. 首先, 编译器将源代码转化为机器语言, 并储存在目标文件中. 但目标文件是不完整的, 它缺少启动文件以及你所使用的库函数代码 (几乎所有程序都需要使用到C标准库里的函数, 在代码中, 你只用到了所需要的函数, 而没有真正写出这个函数的代码), 这就需要链接器来补充这两种文件. 一般编译器会自动调用链接器.</p>
+<h4 id="使用C语言的7个步骤"><a href="#使用C语言的7个步骤" class="headerlink" title="使用C语言的7个步骤"></a>使用C语言的7个步骤</h4><ol>
+<li>定义程序目标</li>
+<li>设计程序</li>
+<li>编写代码</li>
+<li>编译</li>
+<li>运行程序</li>
+<li>测试和调试程序</li>
+<li>维护和修改程序</li>
+</ol>
+<h4 id="bug和调试"><a href="#bug和调试" class="headerlink" title="bug和调试"></a>bug和调试</h4><p>在编程中我们经常会犯错误, 在程序中出现的错误一般称为bug, 在编译过程中编译器如果发现代码有问题, 将直接报错而不将源代码转化为中间文件, 读懂编译器的提示信息很重要. 查找并修复错误的过程叫做调试, 这也是使用C语言的重要一环, 以后会介绍一些调试的技巧.</p>
+
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://moonycat123.github.io/2024/08/09/%E6%A8%A1%E6%8B%9F%E9%80%80%E7%81%AB%E7%AE%97%E6%B3%95/" data-id="clzof6fx30008a8v9ghotfgn4" data-title="模拟退火算法" class="article-share-link"><span class="fa fa-share">分享</span></a>
+      <a data-url="https://moonycat123.github.io/2024/08/25/%E5%88%9D%E8%AF%86C%E8%AF%AD%E8%A8%80/" data-id="cm0b49tu70006z8v91jzx1ceu" data-title="初识C语言" class="article-share-link"><span class="fa fa-share">分享</span></a>
       
       
       
@@ -269,7 +255,7 @@ P=e^{-\frac {L}{100\times 0.95^t}}</script><p>​    这里的$C_t$参数可以�
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://moonycat123.github.io/2024/08/06/%E6%95%B0%E5%AD%A6%E5%BB%BA%E6%A8%A1%E8%AE%BA%E6%96%87%E5%86%99%E4%BD%9C%E6%96%B9%E6%B3%95/" data-id="clzof6fx00006a8v9ghg7gcor" data-title="数学建模论文写作方法" class="article-share-link"><span class="fa fa-share">分享</span></a>
+      <a data-url="https://moonycat123.github.io/2024/08/06/%E6%95%B0%E5%AD%A6%E5%BB%BA%E6%A8%A1%E8%AE%BA%E6%96%87%E5%86%99%E4%BD%9C%E6%96%B9%E6%B3%95/" data-id="cm0b49tub0009z8v91fiufqcv" data-title="数学建模论文写作方法" class="article-share-link"><span class="fa fa-share">分享</span></a>
       
       
       
@@ -354,7 +340,7 @@ P=e^{-\frac {L}{100\times 0.95^t}}</script><p>​    这里的$C_t$参数可以�
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://moonycat123.github.io/2024/07/31/%E5%9C%86%E9%94%A5%E6%9B%B2%E7%BA%BF%E5%87%A0%E4%BD%95%E6%80%A7%E8%B4%A8%E2%80%94%E2%80%94%E6%8A%9B%E7%89%A9%E7%BA%BF%EF%BC%881-5%EF%BC%89/" data-id="clzof6fwy0005a8v99fr8h516" data-title="圆锥曲线几何性质——抛物线（1-5）" class="article-share-link"><span class="fa fa-share">分享</span></a>
+      <a data-url="https://moonycat123.github.io/2024/07/31/%E5%9C%86%E9%94%A5%E6%9B%B2%E7%BA%BF%E5%87%A0%E4%BD%95%E6%80%A7%E8%B4%A8%E2%80%94%E2%80%94%E6%8A%9B%E7%89%A9%E7%BA%BF%EF%BC%881-5%EF%BC%89/" data-id="cm0b49tu90007z8v986s3fupr" data-title="圆锥曲线几何性质——抛物线（1-5）" class="article-share-link"><span class="fa fa-share">分享</span></a>
       
       
       
@@ -395,7 +381,7 @@ P=e^{-\frac {L}{100\times 0.95^t}}</script><p>​    这里的$C_t$参数可以�
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://moonycat123.github.io/2024/07/30/Myfirstblog/" data-id="clzof6fwq0001a8v941kl0uns" data-title="Myfirstblog" class="article-share-link"><span class="fa fa-share">分享</span></a>
+      <a data-url="https://moonycat123.github.io/2024/07/30/Myfirstblog/" data-id="cm0b49ttz0001z8v9gr3xftfr" data-title="Myfirstblog" class="article-share-link"><span class="fa fa-share">分享</span></a>
       
       
       
@@ -444,7 +430,7 @@ P=e^{-\frac {L}{100\times 0.95^t}}</script><p>​    这里的$C_t$参数可以�
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://moonycat123.github.io/2024/07/30/hello-world/" data-id="clzof6fwu0003a8v90ex8dmd5" data-title="Hello World" class="article-share-link"><span class="fa fa-share">分享</span></a>
+      <a data-url="https://moonycat123.github.io/2024/07/30/hello-world/" data-id="cm0b49tu20003z8v9hszifumw" data-title="Hello World" class="article-share-link"><span class="fa fa-share">分享</span></a>
       
       
       
@@ -466,7 +452,7 @@ P=e^{-\frac {L}{100\times 0.95^t}}</script><p>​    这里的$C_t$参数可以�
   <div class="widget-wrap">
     <h3 class="widget-title">分类</h3>
     <div class="widget">
-      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/conics/">conics</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%95%B0%E6%A8%A1/">数模</a></li></ul>
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/C-Primer-Plus/">C Primer Plus</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/conics/">conics</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%95%B0%E6%A8%A1/">数模</a></li></ul>
     </div>
   </div>
 
@@ -508,7 +494,7 @@ P=e^{-\frac {L}{100\times 0.95^t}}</script><p>​    这里的$C_t$参数可以�
       <ul>
         
           <li>
-            <a href="/2024/08/09/%E6%A8%A1%E6%8B%9F%E9%80%80%E7%81%AB%E7%AE%97%E6%B3%95/">模拟退火算法</a>
+            <a href="/2024/08/25/%E5%88%9D%E8%AF%86C%E8%AF%AD%E8%A8%80/">初识C语言</a>
           </li>
         
           <li>
