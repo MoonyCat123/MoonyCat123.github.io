@@ -14,7 +14,7 @@
 <meta property="og:description" content="首先来看一个简单的程序, 来初步学习一下C语言 12345678910111213141516#include &lt;stdio.h&gt;int main(void)&#123;	int num;	num &#x3D; 1;	printf(&quot;I am a simple &quot;);	printf(&quot;cumputer.\n&quot;);	printf(My favorite nu">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2024-08-29T15:12:49.000Z">
-<meta property="article:modified_time" content="2024-08-30T09:35:12.569Z">
+<meta property="article:modified_time" content="2024-08-30T09:42:30.095Z">
 <meta property="article:author" content="MoonyCat123">
 <meta property="article:tag" content="none">
 <meta name="twitter:card" content="summary">
@@ -139,7 +139,7 @@
 <h5 id="定义函数"><a href="#定义函数" class="headerlink" title="定义函数"></a>定义函数</h5><p>函数是 C 程序的基本模块, 每个函数都有各种各样的功能. 函数由函数头和函数体组成, 函数头包括返回值类型, 函数名以及传入函数的信息类型, 函数体即为花括号部分. 函数体由一系列语句 (如运算表达式, 赋值表达式等) 和声明(变量的声明) 组成.</p>
 <p>分号是一条语句和一条声明的一部分, 当编译器读到分号时, 编译器明白这是一条语句, 写程序一定不要忘记分号. (语句以分号为分隔, 即使你将所有语句写在同一行, 只要加上了分号, 代码也能运行, 只是会不那么美观. 预处理指令以换行符为分隔, 不需要分号) 函数声明也是声明, 也是一条语句, 需要使用分号. 定义函数时, 函数头与函数声明很类似, 但函数头后面不能使用分号, 因为它不是一条语句.</p>
 <p>我们定义的 apple 函数返回值类型为 void, 即没有返回值, 因此没有 return 语句.</p>
-<h5 id="程序的调试"><a href="#程序的调试" class="headerlink" title="程序的调试"></a>程序的调试</h5><p>程序调试过程即为发现程序错误的过程. 如果程序有语法错误, 编译器能够发现并指出.但如果发生语义错误, 编译器则不能发现.</p>
+<h5 id="程序的调试"><a href="#程序的调试" class="headerlink" title="程序的调试"></a>程序的调试</h5><p>程序调试过程即为发现程序错误并修改的过程. 如果程序有语法错误, 编译器能够发现并指出.但如果发生语义错误, 编译器则不能发现.</p>
 <p>如果在编译过程中发生错误, 根据编译器的提示检查代码对应行, 改正语法错误.</p>
 <p>如果编译成功, 但输出结果和预期不符 (即发生语义错误), 对于简单的程序, 可以逐条分析代码, 模拟变量变化过程, 分析变量在哪一步发生了问题. 对于较为复杂的程序, 可以利用编译器自带的调试工具. 调试工具能使代码运行至指定位置, 并逐条运行代码, 在运行过程中你可以查看变量的变化过程.</p>
 <p>在学习 C 语言时, 犯错是不可避免的, 不要灰心, 这些都能成为你宝贵的经验!</p>
