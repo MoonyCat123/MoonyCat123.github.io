@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  
+  <title>C语言概述 | MoonyCat123&#39;s blog</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="首先来看一个简单的程序, 来初步学习一下C语言 12345678910111213141516#include &lt;stdio.h&gt;int main(void)&#123;	int num;	num &#x3D; 1;	printf(&quot;I am a simple &quot;);	printf(&quot;cumputer.\n&quot;);	printf(My favorite nu">
+<meta property="og:type" content="article">
+<meta property="og:title" content="C语言概述">
+<meta property="og:url" content="https://moonycat123.github.io/2024/08/29/C%E8%AF%AD%E8%A8%80%E6%A6%82%E8%BF%B0/index.html">
+<meta property="og:site_name" content="MoonyCat123&#39;s blog">
+<meta property="og:description" content="首先来看一个简单的程序, 来初步学习一下C语言 12345678910111213141516#include &lt;stdio.h&gt;int main(void)&#123;	int num;	num &#x3D; 1;	printf(&quot;I am a simple &quot;);	printf(&quot;cumputer.\n&quot;);	printf(My favorite nu">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2024-08-29T15:12:49.000Z">
+<meta property="article:modified_time" content="2024-08-30T09:35:12.569Z">
+<meta property="article:author" content="MoonyCat123">
+<meta property="article:tag" content="none">
+<meta name="twitter:card" content="summary">
+  
+    <link rel="alternate" href="/atom.xml" title="MoonyCat123's blog" type="application/atom+xml">
+  
+  
+    <link rel="shortcut icon" href="/favicon.png">
+  
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+    
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.min.css">
+
+  
+  
+<meta name="generator" content="Hexo 7.3.0"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">MoonyCat123&#39;s blog</a>
+      </h1>
+      
+        <h2 id="subtitle-wrap">
+          <a href="/" id="subtitle">welcome to my blog(^-^)</a>
+        </h2>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"><span class="fa fa-bars"></span></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+        
+          <a class="nav-icon" href="/atom.xml" title="RSS 订阅"><span class="fa fa-rss"></span></a>
+        
+        <a class="nav-icon nav-search-btn" title="搜索"><span class="fa fa-search"></span></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="搜索"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="https://moonycat123.github.io"></form>
+      </div>
+    </div>
+  </div>
+</header>
+
+      <div class="outer">
+        <section id="main"><article id="post-C语言概述" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2024/08/29/C%E8%AF%AD%E8%A8%80%E6%A6%82%E8%BF%B0/" class="article-date">
+  <time class="dt-published" datetime="2024-08-29T15:12:49.000Z" itemprop="datePublished">2024-08-29</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/C-Primer-Plus/">C Primer Plus</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="p-name article-title" itemprop="headline name">
+      C语言概述
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <p>首先来看一个简单的程序, 来初步学习一下C语言</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">#include &lt;stdio.h&gt;</span><br><span class="line">int main(void)</span><br><span class="line">&#123;</span><br><span class="line">	int num;</span><br><span class="line">	num = 1;</span><br><span class="line"></span><br><span class="line">	printf(&quot;I am a simple &quot;);</span><br><span class="line">	printf(&quot;cumputer.\n&quot;);</span><br><span class="line">	printf(My favorite number is %d becouse it is first.\n&quot;,num);</span><br><span class="line"></span><br><span class="line">	return 0;</span><br><span class="line">&#125;</span><br><span class="line">运行结果</span><br><span class="line">I am a simple cumputer.</span><br><span class="line">My favorite number is 1 becouse it is first.</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<p>下面来逐条分析一下语句:</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">#include &lt;stdio.h&gt;</span><br></pre></td></tr></table></figure>
+<p>这是一条预处理指令, C 编译器在编译之前会首先处理预处理指令. 这条语句的作用相当于将 stdio.h 的文件内容直接复制粘贴过来, 替换掉 #include <stdio.h> 这条指令.</stdio.h></p>
+<p>stdio.h 文件是一个头文件 (header, 文件拓展名为 .h). 通常, 在 C 程序顶端的信息集合被称为头文件, 包含着编译器为编译程序可能需要用到的信息, 包括声明变量以及声明函数. 在 stdio.h 文件中, 包含着 printf() 的函数声明, 这是我们需要的, 因此这里我们需要使用这条语句.</p>
+<p>事实上, stdio.h 被称为标准输入/输出头文件, 它包含 C 函数库中输入/输出函数的声明, 在绝大多数需要输入输出的程序中都需要用到它.</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">int main(void)</span><br></pre></td></tr></table></figure>
+<p>在 C 程序中你可以定义任何函数, 但记住, main() 函数总是程序首先执行的函数, 看来 main 这个普通的名字对编译器有着特殊的意义 XD. </p>
+<p>C 程序的基本模块是函数, 每个函数有着各种各样不同的功能, 而 main() 函数总是最先被执行的函数, 它是程序的基本框架.</p>
+<p>圆括号 ‘( )’ 是函数的标志, 圆括号前面的字符称为函数名, 例如在这里的函数名字为 main. 括号中的内容表示需要输入函数的内容. 这里 void 表示空 (即不需要输入).</p>
+<p>前面的 int 是 C 语言的关键词, 表示 main 函数返回值为整形, 在后面章节再讨论函数返回值的问题.</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">返回值类型 函数名(输入信息)</span><br></pre></td></tr></table></figure>
+<p>后面的花括号中即为函数的内容. (必须使用花括号 ‘{}’)</p>
+<p>总之, int main(void) 为书写 mian() 函数的标准格式, 需要按规定这样书写.</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">int num;</span><br></pre></td></tr></table></figure>
+<p>这行代码叫做声明, 声明是 C 最重要的特征之一. 在其他语言中, 你可能不需要这行代码就能直接使用一个变量, 但 C 语言严格化了使用变量这个操作, 对于以简便灵活著称的 C 语言, 这么做一定有道理.</p>
+<p>声明中的 int 告诉了计算机我要使用一个整形变量, 计算机便在内存中的某个位置划分出整形所需要大小的内存区域, 并将该内存区域命名为 num, 以后每当程序使用 num 这个变量, 就会查取这个内存区域所存储的值.</p>
+<p>变量, 顾名思义其值可以变动, 这往往通过赋值操作完成, 使用赋值运算符 “=”</p>
+<p>在写 C 程序时, 往往将所有变量的声明放在函数最开始的位置, 这样便于理清整个程序的思路. </p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">#include &lt;stdio.h&gt;</span><br><span class="line">int main(void)</span><br><span class="line">&#123;</span><br><span class="line">	int n1;</span><br><span class="line">	int n2;</span><br><span class="line">	int n3;</span><br><span class="line">	</span><br><span class="line">	n1 = 5;</span><br><span class="line">	n2 = n1 * n1;</span><br><span class="line">	n3 = n1 * n2;</span><br><span class="line">	</span><br><span class="line">	printf(&quot;n = %d, n squared = %d, n cubed = %d.\n&quot;,n1,n2,n3);</span><br><span class="line">	</span><br><span class="line">	return 0;</span><br><span class="line">&#125;</span><br><span class="line">运行结果</span><br><span class="line">n = 5, n squared = 25, n cubed = 125.</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<p>多个变量的声明也可以写在一起, 用逗号隔开</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">int n1, n2, n3;</span><br></pre></td></tr></table></figure>
+<h5 id="printf-函数"><a href="#printf-函数" class="headerlink" title="printf()函数"></a>printf()函数</h5><p>printf()是标准输出函数, 这个函数会查看双引号中的内容, 并将其打印在一个窗口上. 除了一些能明确输入的字符, 还有一些不能直接输入的字符 (转义序列), 比如换行符. 输入\n 能表示这个符号, 使得光标换行再继续输入.</p>
+<p>第三条 printf 语句不仅打印了一系列我们输入的字符, 还打印了 num 变量的值. 在打印变量的值时, 计算机会用变量的内容替换掉 %d. %d 中的 d 告诉计算机, 我想用十进制整数的形式来打印出 num 的值, 以后还会见到更多变量的输出形式.</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">return 0;</span><br></pre></td></tr></table></figure>
+<p>上面说过, int main(void) 中的 int 表示 main() 函数的返回值为整形, 那返回值为多少呢? 使用 return 语句来返回函数的值, 这里返回的值为0. 对于有返回值的函数 (函数名前的返回值类型不是 void 的函数), 都需要 return 语句来返回函数值.</p>
+<p>这里 main() 函数的返回值其实没有太大的含义, 但 C 语言要求如此, 一般都会在 main() 函数主体最后加上 return 0. (如果没有 return 语句, 函数默认返回值也是0, 但其他有返回值的函数返回值都是有意义的, 都需要最后加上 return 语句, 这里为了养成好习惯, 所以在 main() 函数最后也加上)</p>
+<h5 id="函数概要"><a href="#函数概要" class="headerlink" title="函数概要"></a>函数概要</h5><p>C 语言的基本模块是函数. 除了使用 C 库里的函数 (如 printf() 函数) 我们也可以自己定义函数, 下面是一个例子:</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">/* apple.c --打印语句的函数 */</span><br><span class="line">#include &lt;stdio.h&gt;</span><br><span class="line">void apple(void); /* 函数原型/函数声明 */</span><br><span class="line">int main(void)</span><br><span class="line">&#123;</span><br><span class="line">	printf(&quot;I will summon the apple function.\n&quot;);</span><br><span class="line">	apple();	//使用函数</span><br><span class="line">	apple();</span><br><span class="line">	apple();</span><br><span class="line">	</span><br><span class="line">	return 0;</span><br><span class="line">&#125;</span><br><span class="line">/* 定义函数 apple */</span><br><span class="line">void apple(void)</span><br><span class="line">&#123;</span><br><span class="line">	printf(&quot;I love eating apples.\n&quot;);</span><br><span class="line">&#125;</span><br><span class="line">运行结果</span><br><span class="line">I will summon the apple function.</span><br><span class="line">I love eating apples.</span><br><span class="line">I love eating apples.</span><br><span class="line">I love eating apples.</span><br></pre></td></tr></table></figure>
+<p>在分析函数前, 说明一下函数中的注释. 注释用于说明程序, 提高程序可读性, 在代码较为复杂的情况下, 注释可以帮程序员以及读者理清程序思路. 在编译器编译源代码时, 会自动忽略注释内容. </p>
+<p>注释有两种形式, 可以用 /<em> … </em>/ 将注释内容括起来, 相当于括号, 可以跨行使用. 另一种是 // , 注释内容放于其后, 只能单行使用.</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">void apple(void);</span><br></pre></td></tr></table></figure>
+<p>这是函数原型语句, 或者叫函数的声明. 它告诉编译器本程序会用到这一个函数, 并告诉如何使用该函数 (输入参数数据类型以及返回值类型). C 语言规定, 使用任何函数都需要进行函数声明. 那为什么我们没有对 printf() 函数进行声明呢. 上面提到过, printf() 的声明已包含在 stdio.h 文件中, 我们使用 #include <stdio.h> 语句就相当于进行了函数声明.</stdio.h></p>
+<h5 id="定义函数"><a href="#定义函数" class="headerlink" title="定义函数"></a>定义函数</h5><p>函数是 C 程序的基本模块, 每个函数都有各种各样的功能. 函数由函数头和函数体组成, 函数头包括返回值类型, 函数名以及传入函数的信息类型, 函数体即为花括号部分. 函数体由一系列语句 (如运算表达式, 赋值表达式等) 和声明(变量的声明) 组成.</p>
+<p>分号是一条语句和一条声明的一部分, 当编译器读到分号时, 编译器明白这是一条语句, 写程序一定不要忘记分号. (语句以分号为分隔, 即使你将所有语句写在同一行, 只要加上了分号, 代码也能运行, 只是会不那么美观. 预处理指令以换行符为分隔, 不需要分号) 函数声明也是声明, 也是一条语句, 需要使用分号. 定义函数时, 函数头与函数声明很类似, 但函数头后面不能使用分号, 因为它不是一条语句.</p>
+<p>我们定义的 apple 函数返回值类型为 void, 即没有返回值, 因此没有 return 语句.</p>
+<h5 id="程序的调试"><a href="#程序的调试" class="headerlink" title="程序的调试"></a>程序的调试</h5><p>程序调试过程即为发现程序错误的过程. 如果程序有语法错误, 编译器能够发现并指出.但如果发生语义错误, 编译器则不能发现.</p>
+<p>如果在编译过程中发生错误, 根据编译器的提示检查代码对应行, 改正语法错误.</p>
+<p>如果编译成功, 但输出结果和预期不符 (即发生语义错误), 对于简单的程序, 可以逐条分析代码, 模拟变量变化过程, 分析变量在哪一步发生了问题. 对于较为复杂的程序, 可以利用编译器自带的调试工具. 调试工具能使代码运行至指定位置, 并逐条运行代码, 在运行过程中你可以查看变量的变化过程.</p>
+<p>在学习 C 语言时, 犯错是不可避免的, 不要灰心, 这些都能成为你宝贵的经验!</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://moonycat123.github.io/2024/08/29/C%E8%AF%AD%E8%A8%80%E6%A6%82%E8%BF%B0/" data-id="cm0giqny80000tkv94ibm1q17" data-title="C语言概述" class="article-share-link"><span class="fa fa-share">分享</span></a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/none/" rel="tag">none</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+  
+    <a href="/2024/08/25/%E5%88%9D%E8%AF%86C%E8%AF%AD%E8%A8%80/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">后一篇</strong>
+      <div class="article-nav-title">初识C语言</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">分类</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/C-Primer-Plus/">C Primer Plus</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/conics/">conics</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%95%B0%E6%A8%A1/">数模</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">标签</h3>
+    <div class="widget">
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/none/" rel="tag">none</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">标签云</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/none/" style="font-size: 10px;">none</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">归档</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2024/08/">八月 2024</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2024/07/">七月 2024</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">最新文章</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2024/08/29/C%E8%AF%AD%E8%A8%80%E6%A6%82%E8%BF%B0/">C语言概述</a>
+          </li>
+        
+          <li>
+            <a href="/2024/08/25/%E5%88%9D%E8%AF%86C%E8%AF%AD%E8%A8%80/">初识C语言</a>
+          </li>
+        
+          <li>
+            <a href="/2024/08/06/%E6%95%B0%E5%AD%A6%E5%BB%BA%E6%A8%A1%E8%AE%BA%E6%96%87%E5%86%99%E4%BD%9C%E6%96%B9%E6%B3%95/">数学建模论文写作方法</a>
+          </li>
+        
+          <li>
+            <a href="/2024/07/31/%E5%9C%86%E9%94%A5%E6%9B%B2%E7%BA%BF%E5%87%A0%E4%BD%95%E6%80%A7%E8%B4%A8%E2%80%94%E2%80%94%E6%8A%9B%E7%89%A9%E7%BA%BF%EF%BC%881-5%EF%BC%89/">圆锥曲线几何性质——抛物线（1-5）</a>
+          </li>
+        
+          <li>
+            <a href="/2024/07/30/Myfirstblog/">Myfirstblog</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      
+      &copy; 2024 MoonyCat123<br>
+      Powered by <a href="https://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+
+<script src="/js/jquery-3.6.4.min.js"></script>
+
+
+
+  
+<script src="/fancybox/jquery.fancybox.min.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+
+  </div>
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+            processEscapes: true
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax();
+        for (var i = 0; i < all.length; ++i)
+            all[i].SourceElement().parentNode.className += ' has-jax';
+    });
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+</body>
+</html>
